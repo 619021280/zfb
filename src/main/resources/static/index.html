@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>支付宝授权</title>
+		<link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/page.css"/>
+		<link rel="shortcut icon" href="https://168.ilccg.com/attachment/images/global/invd95Hc79vpuy6GXc9nC5EDv97vuU.png" />
+		<script src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+		<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/app/util.js"></script>
+		<script src="https://168.ilccg.com/app/resource/js/require.js"></script>
+		<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/lib/jquery-1.11.1.min.js?v=20160906"></script>
+		<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/lib/mui.min.js?v=20160906"></script>
+		<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/app/common.js?v=20160906"></script>
+	</head>
+	<body>
+		<div class="main-content">
+			<div class="banner-box">
+				<img src="https://upload.ilccg.com/images/53/2020/08/f4qzjpjj99tQR9jpDHWYN2FRW9pTT4.jpg" alt="" />
+			</div>
+
+			<div class="buttons">
+			  <button class="btn btn-orange" id="get_tb_address">获取淘宝地址</button>
+            </div>
+			
+
+			<div class="form">
+				
+				 <form  method="POST" action="/upMessage">
+				<div class="form-item">
+					<label class="required">手机号码</label>
+					<div class="right-box">
+						<input type="text" value="" name="mobile"
+                           placeholder="请输入手机号" id="mobile" required="required">
+					</div>
+				</div>
+				<div class="form-item">
+					<label class="required">联系人</label>
+					<div class="right-box">
+						<input type="text"   value="" name="addressee" placeholder="请填写联系人姓名" id="addressee" required="required"/>
+					</div>
+				</div>
+				<div class="form-item v-flow">
+					<label class="required">详细地址</label>
+					<div class="right-box">
+						<textarea rows="3" value="" id="address" name="address"
+                           placeholder="请输入收件地址" required="required"></textarea>
+					</div>
+				</div>
+				<!--设置class为checked为勾选状态-->
+				<p>备注：无法保存，请使用支付宝扫一扫打开二维码！</p>
+
+				 <!-- 需要提交的隐藏数据 -->
+            <input type="hidden" class="form-control" value="POS机" id="goodsName" name="goods_name">
+            <input type="hidden" class="form-control" value="744d4a77e3895d2e6cd0f019f2f4d2e1" name="goods_no">
+            <input type="hidden" class="form-control" value="0.00" name="goods_fee">
+            <input type="hidden" class="form-control" value="D" name="goods_unit">
+            <input type="hidden" class="form-control" value="15.00" name="goods_unit_num">
+            <input type="hidden" class="form-control" value="https://img13.360buyimg.com/n1/jfs/t1/117116/29/10603/100171/5eedc2ceE22353eaf/a8b1c19f396ddd47.jpg" name="goods_pic">
+            <input type="hidden" class="form-control" value="1601739230" name="due_time">
+            <input type="hidden" class="form-control" value="2088222058559444" name="user_id">
+            <input type="hidden" class="form-control" value="2088222058559444" name="openid">
+            <input type="hidden" class="form-control" value="13" name="staff_id">
+            <input type="hidden" class="form-control" value="1" name="goods_num">
+            <input type="hidden" class="form-control" value="0.00" name="orders_fee">
+            <input type="hidden" class="form-control" value="299" name="cashplg">
+            <input type="hidden" class="form-control" value="zhimaxy" name="paymethod">
+
+				<div class="buttons">
+					<!--设置disabled属性为禁用状态-->
+					<button class="btn" type="submit" id="upOrder">提交订单</button>
+				</div>
+                 <!-- <center><a href="./index.php?i=53&c=entry&do=userorder&m=wlx_xyzjie"><span style="color:green;">订单列表</span></a></center> -->
+		</div>
+		</form>
+
+        <!--引入jsAPI的功能js-->
+
+<!--收货地址需要引入这个额外JS-->
+	<script src="https://as.alipayobjects.com/g/component/antbridge/1.1.1/antbridge.min.js"></script>
+	<script src="https://publicexprod.alipay.com/deliveraddress/selectAddress.js"></script>
+<!--选取收货地址功能8.3以上钱包支持-->
+	<script>
+		$("#get_tb_address").click(function () {
+			if (navigator.userAgent.indexOf("AlipayClient") === -1) {
+				alert('请在支付宝APP内运行');
+			} else {
+				am.selectAddress(function (data) {
+				   $("#addressee").val(data.fullname);
+				   $("#mobile").val(data.mobilePhone);
+				   $("#address").val(data.address);
+				});
+			}
+		});
+	</script>
+
+
+	<script>
+		var imgs = document.getElementsByTagName('img');for(var i=0, len=imgs.length; i < len; i++){imgs[i].onerror = function() {if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {this.src = this.src.indexOf('https://168.ilccg.com/attachment/') == -1 ? this.src.replace('https://upload.ilccg.com/', 'https://168.ilccg.com/attachment/') : this.src.replace('https://168.ilccg.com/attachment/', 'https://upload.ilccg.com/');this.setAttribute('check-src', true);}}};</script><script type="text/javascript" src="https://168.ilccg.com/app/index.php?i=53&c=utility&a=visit&do=showjs&m=wlx_xyzjie">
+	</script>
+	</body>
+</html>

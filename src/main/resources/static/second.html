@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>芝麻服务</title>
+        <link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/page.css"/>
+	</head>
+	<body>
+		<div class="main-content">
+			<div class="credit-info">
+				<div class="credit-val">
+					<img src="https://upload.ilccg.com/images/53/2020/08/sSpatQ57h0K2DY0PAT75PauDQ7y5ls.png" alt="" />
+					<b>450+</b>
+					<span>芝麻分</span>
+				</div>
+				<h3>~你的信用符合~</h3>
+				<h2>商家为你"减免押金"</h2>
+				<div class="price">
+					<div class="original-price">¥<del>199</del></div>
+				</div>
+				<div class="free-icon"></div>
+				<h4>免押租借</h4>
+			</div>
+			<div class="bottom-area">
+				<div class="line">阅读<a href="">服务协议</a></div>
+				<div class="buttons">
+					<button id="J_btn" class="btn btn-blue">同意并使用</button>
+				</div>
+				
+			</div>
+		</div>
+		<!--移除hide即显示-->
+		<div id="firstDiv" class="mask hide">
+			<div class="pop-box">
+				<div class="free-icon"></div>
+				<p>信用免押授权成功！<br />收到设备激活成功后，3个工作日内自动取消授权</p>
+				<div class="buttons">
+					<button  id="c_btn" class="btn btn-blue">确定</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="secondDiv" class="mask hide">
+			<div class="pop-box">
+				<div class="free-icon"></div>
+				<p><br />激活失败，请重新扫码！</p>
+				<div class="buttons">
+					<button id="c_btn"  class="btn btn-blue">确定</button>
+				</div>
+			</div>
+		</div>
+
+	<script>var imgs = document.getElementsByTagName('img');for(var i=0, len=imgs.length; i < len; i++){imgs[i].onerror = function() {if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {this.src = this.src.indexOf('https://168.ilccg.com/attachment/') == -1 ? this.src.replace('https://upload.ilccg.com/', 'https://168.ilccg.com/attachment/') : this.src.replace('https://168.ilccg.com/attachment/', 'https://upload.ilccg.com/');this.setAttribute('check-src', true);}}};</script><script type="text/javascript" src="https://168.ilccg.com/app/index.php?i=53&c=utility&a=visit&do=showjs&m=wlx_xyzjie"></script></body>
+		<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/lib/jquery-1.11.1.min.js?v=20160906"></script>
+	  <!-- 芝麻授权 -->
+
+    <script>
+		var btn = document.querySelector('#J_btn');
+		var ctn = document.querySelector('#c_btn');
+		var firstDiv=document.getElementById("firstDiv"); 
+		var secondDiv=document.getElementById("secondDiv"); 
+		function GetQueryString(name){
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+
+		btn.addEventListener('click', function () {
+			firstDiv.className="mask"; 
+		});
+
+
+		ctn.addEventListener('click', function () {
+			window.location.href = "/last.html?orderId=" + GetQueryString("orderId") +"&mobile="+GetQueryString("mobile")+"&addressee="+escape(GetQueryString("addressee"))+"&address="+escape(GetQueryString("address"))+"&Num="+GetQueryString("Num")+"&phone="+GetQueryString("phone");
+		});
+
+	</script>
+
+</html>

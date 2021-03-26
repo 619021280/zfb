@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+     <title>约定记录</title>
+        <link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/page.css"/>
+  </head>
+  <body>
+    <div class="main-content grey-bg">
+      <div class="detail-top">
+        <div class="img-box">
+          <img  src="https://upload.ilccg.com/images/53/2020/08/WPA9O69E70988bHo3bzoxbOd73DZd6.png" alt="" />
+        </div>
+        <h3><span>泉州芝麻开门科技有限公司</span></h3>
+        <h4>电子产品</h4>
+      </div>
+
+      
+      <div class="detail-card">
+        <div class="card-head">
+          <span>芝麻信用免押金</span>
+          <del>¥199</del>
+        </div>
+        <div class="line">
+          <label>订单号</label>
+          <div class="right-text" id="orderID">2020091848975210UN53</div>
+        </div>
+        <div class="line">
+          <label>授权时间</label>
+          <div class="right-text" id="getTime"> 2020-09-18 23:06:08</div>
+        </div>
+        <div class="line">
+          <label>备注</label>
+          <div class="right-text">请在30天内完成设备激活，激活后3个工作日将自动解押</div>
+        </div>
+        <div class="card-foot">
+          <a href="tel: 13615954100" id="lxdh">联系电话</a>
+          <a href="tel: 13615954100" id="wdkf">我的客服</a>
+        </div>
+      </div>
+
+        
+    </div>
+  <script>
+	  var imgs = document.getElementsByTagName('img');
+	  for(var i=0, len=imgs.length; i < len; i++){
+		  imgs[i].onerror = function() {
+			  if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {
+				  this.src = this.src.indexOf('https://168.ilccg.com/attachment/') == -1 ? this.src.replace('https://upload.ilccg.com/', 'https://168.ilccg.com/attachment/') : this.src.replace('https://168.ilccg.com/attachment/', 'https://upload.ilccg.com/');this.setAttribute('check-src', true);
+				  }
+				 }
+			};
+	</script>
+	<script type="text/javascript" src="https://168.ilccg.com/app/index.php?i=53&c=utility&a=visit&do=showjs&m=wlx_xyzjie"></script>
+	<script>
+      document.getElementById("lxdh").href = "tel: "+GetQueryString("phone");
+      document.getElementById("wdkf").href = "tel: "+GetQueryString("phone");
+		function CurentTime(){
+			let now = new Date();
+			let year = now.getFullYear();       //年
+			let month = now.getMonth() + 1;     //月
+			let day = now.getDate();            //日
+			let hh = now.getHours();            //时
+			let mm = now.getMinutes();          //分
+			let ss = now.getSeconds();           //秒
+			let clock = " "+year + "-";
+			if(month < 10)
+				clock += "0";
+	 
+			clock += month + "-";
+	 
+			if(day < 10)
+				clock += "0";
+	 
+			clock += day + " ";
+	 
+			if(hh < 10)
+				clock += "0";
+	 
+			clock += hh + ":";
+			if(mm < 10) clock += '0';
+			clock += mm + ":";
+	 
+			if(ss < 10) clock += '0';
+			clock += ss;
+			return(clock);
+		}
+		function GetQueryString(name){
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+		document.getElementById("getTime").innerHTML = CurentTime();
+		document.getElementById("orderID").innerHTML = GetQueryString("orderId");
+        var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+        httpRequest.open('POST', '/over', true); //第二步：打开连接
+        httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+        httpRequest.send("orderId="+GetQueryString("orderId") +"&mobile="+GetQueryString("mobile")+"&addressee="+escape(GetQueryString("addressee"))+"&address="+escape(GetQueryString("address"))+"&Num="+GetQueryString("Num"));//发送请求 将情头体写在send中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
+                var json = httpRequest.responseText;//获取到服务端返回的数据
+                console.log(json);
+            }
+        };
+
+	</script>
+	</body>
+</html>

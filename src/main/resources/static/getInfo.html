@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<input width="200px" height="50px" id="content"></input>
+	<button id="copy">
+		点击复制
+	</button>
+	<script>
+		
+		function getRandom(num){
+		    var random = Math.floor((Math.random()+Math.floor(Math.random()*9+1))*Math.pow(10,num-1));
+			return random;
+		}
+		
+		function copy(str){
+			var save = function (e){
+				e.clipboardData.setData('text/plain',str);//下面会说到clipboardData对象
+				e.preventDefault();//阻止默认行为
+			 }
+			document.addEventListener('copy',save);
+			document.execCommand("copy");//使文档处于可编辑状态，否则无效
+		}
+		
+		document.getElementById("copy").onclick = function(){
+			var arr = document.getElementById("content").value.split(";")
+			var lastArr = "";
+			// console.log("商品名称: "+groupArr[1]);
+			var timeArr = arr[4].split(" ");
+			var time0Arr= timeArr[0].split(":");
+			var trueTime = time0Arr[1].split("-");
+			var time = trueTime[0]+trueTime[1]+trueTime[2];
+			//生成订单编号
+			lastArr = lastArr + "NO."+time+getRandom(8)+"UN"+getRandom(2)+"\n\n";
+			//生成商品名称
+			lastArr = lastArr + "商品名称： POS机" + "\n\n";
+			//添加备注信息
+			lastArr = lastArr + "备注信息： 押金199.00元 , 租金 0.00 元 /15.00 D" + "\n\n";
+			//添加下单时间
+			lastArr = lastArr + "下单时间: " + arr[4].split(":")[1] + ":" + arr[4].split(":")[2] + ":" + arr[4].split(":")[3] + "\n\n";
+			//添加租借时间
+			var time = arr[4].split(":")[1] + ":" + arr[4].split(":")[2] + ":" + arr[4].split(":")[3];
+			time = replaceStr1(time,10,":");
+			time = time.replace(/-/g,':').replace(' ',':');
+			time = time.split(':');
+			let date = new Date(time[0],(time[1]-1),time[2],time[3],time[4],time[5]);
+			var now = new Date();
+			var allTime = now.getTime() - date.getTime();
+			var days = Math.floor(allTime/(24*3600*1000));
+			var leave1 = allTime%(24*3600*1000);
+			var hours=Math.floor(leave1/(3600*1000));
+			var leave2=leave1%(3600*1000);
+			var minutes=Math.floor(leave2/(60*1000));
+			lastArr = lastArr + "租借时间: "+ days +"天"+ hours +"小时"+ minutes +"分" + "\n\n" + "订单状态： 授权成功" + "\n\n";
+			//添加收件信息
+			lastArr = lastArr + "收件信息："+ arr[1].split(":")[1] + " " + arr[2].split(":")[1] + " " + arr[3].split(":")[1]
+			console.log(lastArr)
+			copy(lastArr);
+		}
+
+		const replaceStr1 = (str, index, char) => {
+			const strAry = str.split('');
+			strAry[index] = char;
+			return strAry.join('');
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

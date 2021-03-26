@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: cloud-payment-service
+  mvc:
+    view:
+      suffix: .html
+  mail:
+    host: smtp.qq.com
+    username: 2531455901@qq.com
+    password: fpgehwnokuabecha
+    default-encoding: UTF-8
+    form: ${spring.mail.username}
+    protocol: smtp
+    port: 465
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: smtp.qq.com
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+            auth: true
+            starttls:
+              enable: true
+            required: true

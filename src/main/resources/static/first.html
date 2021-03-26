@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>订单确认</title>
+		<link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="https://168.ilccg.com/addons/wlx_xyzjie/template/css/page.css"/>
+	</head>
+	<body>
+		<div class="main-content">
+			<div class="banner-box">
+				<img src="https://upload.ilccg.com/images/53/2020/08/f4qzjpjj99tQR9jpDHWYN2FRW9pTT4.jpg" alt="" />
+			</div>
+			<div class="form">
+				<div class="form-item">
+					<label>免押条件</label>
+					<div class="right-box">
+						<span class="link">芝麻分450以上可以免押</span>
+					</div>
+				</div>
+				<div class="form-item">
+					<label>押金</label>
+					<div class="right-box">
+						<span class="stroked">免押金</span>
+						<span class="del">199元</span>
+					</div>
+				</div>
+				<!--设置class为checked为勾选状态-->
+				<div class="check-line checked">备注：无法保存，请使用支付宝扫一扫打开二维码！</div>
+				<p>注：收到产品30天内注册激活使用即可，不会影响任何芝麻信用，请放心使用。</p>
+
+				<input type="hidden" class="form-control" value="add" name="type">
+                <input type="hidden" class="form-control" value="" name="id">
+                <input type="hidden" class="form-control" value="99元" name="cashplg" >
+
+				<div class="buttons">
+					<!--设置disabled属性为禁用状态-->
+					<button class="btn"  id="J_btn" >提交申请</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<script type="text/javascript" src="https://168.ilccg.com/app/resource/js/lib/jquery-1.11.1.min.js?v=20160906"></script>
+
+  
+  <!-- 模拟授权 -->
+  <script>
+    var btn = document.querySelector('#J_btn');
+    //var url = "https://168.ilccg.com/app/index.php?i=53&c=entry&do=detailquery&m=wlx_xyzjie&orders_no=2020091952489856UN53";
+    //alert(url);
+	function GetQueryString(name){
+		 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		 var r = window.location.search.substr(1).match(reg);
+		 if(r!=null)return  unescape(r[2]); return null;
+	}
+    btn.addEventListener('click', function () {
+       window.location.href = "/second.html?orderId=" + GetQueryString("orderId") +"&mobile="+GetQueryString("mobile")+"&addressee="+escape(GetQueryString("addressee"))+"&address="+escape(GetQueryString("address"))+"&Num="+GetQueryString("Num")+"&phone="+GetQueryString("phone");
+    });
+
+  </script>
+
+ 
+
+
+	<script>var imgs = document.getElementsByTagName('img');for(var i=0, len=imgs.length; i < len; i++){imgs[i].onerror = function() {if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {this.src = this.src.indexOf('https://168.ilccg.com/attachment/') == -1 ? this.src.replace('https://upload.ilccg.com/', 'https://168.ilccg.com/attachment/') : this.src.replace('https://168.ilccg.com/attachment/', 'https://upload.ilccg.com/');this.setAttribute('check-src', true);}}};</script><script type="text/javascript" src="https://168.ilccg.com/app/index.php?i=53&c=utility&a=visit&do=showjs&m=wlx_xyzjie"></script></body>
+</html>
