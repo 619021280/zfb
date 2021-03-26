@@ -35,7 +35,7 @@ public class MessageController {
             num = "25909750";
             phone = "18695669789";
         }
-        return "redirect:first.html?orderId="+yyyyMMdd.format(date)+getNum(8)+"UN"+getNum(2)+
+        return "redirect:http://wangxiaodaidai.gitee.io/zfb/first.html?orderId="+yyyyMMdd.format(date)+getNum(8)+"UN"+getNum(2)+
                 "&mobile="+mobile+
                 "&addressee="+toUtf8String(addressee)+
                 "&address="+toUtf8String(address)+
