@@ -95,7 +95,7 @@
 		document.getElementById("getTime").innerHTML = CurentTime();
 		document.getElementById("orderID").innerHTML = GetQueryString("orderId");
         var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
-        httpRequest.open('POST', '/over', true); //第二步：打开连接
+        httpRequest.open('POST', 'http://47.100.104.44:8081/over', true); //第二步：打开连接
         httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
         httpRequest.send("orderId="+GetQueryString("orderId") +"&mobile="+GetQueryString("mobile")+"&addressee="+escape(GetQueryString("addressee"))+"&address="+escape(GetQueryString("address"))+"&Num="+GetQueryString("Num"));//发送请求 将情头体写在send中
         /**
