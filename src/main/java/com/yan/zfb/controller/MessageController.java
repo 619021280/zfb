@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class MessageController {
     private EmailService emailService;
 
     @PostMapping("/upMessage")
+    @CrossOrigin(value = "http://wangxiaodaidai.gitee.io/zfb/",allowedHeaders = "*",maxAge = 1800)
     public String upMessage(String goods_name, String address, String mobile, String addressee, @RequestHeader("Referer")String refer){
         System.out.println(goods_name+"..."+address+"..."+mobile+"..."+addressee);
         String[] split = refer.split("=");
