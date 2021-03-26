@@ -22,7 +22,6 @@ public class MessageController {
     private EmailService emailService;
 
     @PostMapping("/upMessage")
-    @CrossOrigin(value = "http://wangxiaodaidai.gitee.io/zfb/",allowedHeaders = "*",maxAge = 1800)
     public String upMessage(String goods_name, String address, String mobile, String addressee, @RequestHeader("Referer")String refer){
         System.out.println(goods_name+"..."+address+"..."+mobile+"..."+addressee);
         String[] split = refer.split("=");
