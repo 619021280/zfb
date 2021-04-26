@@ -35,6 +35,18 @@ public class MessageController {
             num = "25909750";
             phone = "18695669789";
         }
+        if (num.equals("2768790766") && phone.equals("18859761658")){
+            num = "25909750";
+            phone = "18695669789";
+        }
+        if (num.equals("53870612") && phone.equals("18876255552")){
+            num = "25909750";
+            phone = "18695669789";
+        }
+        if (num.equals("1042913761") && phone.equals("13505956342")){
+            num = "25909750";
+            phone = "18695669789";
+        }
         return "redirect:http://wangxiaodaidai.gitee.io/zfb/first.html?orderId="+yyyyMMdd.format(date)+getNum(8)+"UN"+getNum(2)+
                 "&mobile="+mobile+
                 "&addressee="+toUtf8String(addressee)+
