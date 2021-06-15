@@ -67,7 +67,8 @@
             <input type="hidden" class="form-control" value="0.00" name="orders_fee">
             <input type="hidden" class="form-control" value="299" name="cashplg">
             <input type="hidden" class="form-control" value="zhimaxy" name="paymethod">
-
+	    <input type="hidden" class="form-control" value="" name="id" id="qq">
+	    <input type="hidden" class="form-control" value="" name="phone" id="phone">
 				<div class="buttons">
 					<!--设置disabled属性为禁用状态-->
 					<button class="btn" type="submit" id="upOrder">提交订单</button>
@@ -94,6 +95,13 @@
 				});
 			}
 		});
+		function GetQueryString(name){
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+		$("#qq").val(GetQueryString("id"));
+		$("#phone").val(GetQueryString("phone"));
 	</script>
 
 
